@@ -1,0 +1,31 @@
+# --- Security (CRITICAL) ---
+.env
+.env.local
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# --- Database (Qdrant) ---
+
+qdrant_data/
+
+# --- User Data ---
+
+uploads/*
+
+
+
+# --- IDE & OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Logs & Temp Files ---
+*.log
+try.py
