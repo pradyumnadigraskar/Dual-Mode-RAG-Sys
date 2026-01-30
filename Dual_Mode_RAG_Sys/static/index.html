@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid RAG Chatbot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <header>
+            <div class="brand">
+                <i class="fa-solid fa-robot"></i>
+                <h1>RAG Chatbot <span class="badge">Hybrid</span></h1>
+            </div>
+            
+            <div class="status-bar">
+                <div class="status-item" id="localStatus">
+                    <span class="dot"></span> Local (Ollama)
+                </div>
+                <div class="status-item" id="cloudStatus">
+                    <span class="dot"></span> Cloud (Gemini)
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            
+            <aside class="sidebar">
+                <div class="card upload-card">
+                    <h3><i class="fa-solid fa-file-pdf"></i> Upload Document</h3>
+                    <p class="subtext">Upload a PDF to start chatting.</p>
+                    
+                    <div class="file-drop-area">
+                        <input type="file" id="pdfFile" accept=".pdf" hidden>
+                        <label for="pdfFile" class="file-label">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span id="fileName">Choose File</span>
+                        </label>
+                    </div>
+                    
+                    <button onclick="uploadPDF()" class="btn-primary" id="uploadBtn">
+                        Process PDF
+                    </button>
+                    <p id="uploadStatus" class="status-text"></p>
+                </div>
+
+                <div class="card model-card">
+                    <h3><i class="fa-solid fa-microchip"></i> Model Selection</h3>
+                    
+                    <div class="toggle-wrapper">
+                        <input type="checkbox" id="modelToggle" onchange="toggleMode()">
+                        <label for="modelToggle" class="toggle-label">
+                            <div class="toggle-switch"></div>
+                            <span class="icon-local"><i class="fa-solid fa-server"></i> Local</span>
+                            <span class="icon-cloud"><i class="fa-solid fa-bolt"></i> Cloud</span>
+                        </label>
+                    </div>
+                    <p id="modeDescription">Using <strong>Ollama (Mistral)</strong> for privacy.</p>
+                </div>
+            </aside>
+
+            <main class="chat-interface">
+                <div class="chat-history" id="chatHistory">
+                    <div class="message bot-message">
+                        <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+                        <div class="bubble">Hello! Upload a PDF and ask me anything.</div>
+                    </div>
+                </div>
+
+                <div class="chat-input-area">
+                    <textarea id="userQuery" placeholder="Type your question here..."></textarea>
+                    <button onclick="sendQuery()" class="btn-send">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    
+
+    <script src="script.js?v=2"> </script>
+</body>
+</html>

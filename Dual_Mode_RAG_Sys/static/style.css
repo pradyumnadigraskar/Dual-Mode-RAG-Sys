@@ -1,0 +1,202 @@
+:root {
+    --primary: #4F46E5;
+    --primary-hover: #4338ca;
+    --secondary: #ec4899;
+    --bg-color: #f3f4f6;
+    --card-bg: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --green: #10b981;
+    --red: #ef4444;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-wrapper {
+    width: 90%;
+    max-width: 1100px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.brand { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; color: var(--primary); }
+.brand h1 { font-size: 1.5rem; font-weight: 700; }
+.badge { background: #e0e7ff; color: var(--primary); padding: 4px 8px; border-radius: 12px; font-size: 0.8rem; vertical-align: middle; }
+
+/* Status Bar */
+.status-bar { display: flex; gap: 20px; font-size: 0.9rem; font-weight: 500; }
+.status-item { display: flex; align-items: center; gap: 8px; color: var(--text-muted); opacity: 0.7; }
+.status-item.active { opacity: 1; color: var(--text-main); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background-color: #d1d5db; }
+.status-item.active .dot { background-color: var(--green); box-shadow: 0 0 8px var(--green); }
+
+/* Main Grid */
+.container {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 20px;
+    height: 100%;
+}
+
+/* Cards */
+.card { background: var(--card-bg); padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 20px; }
+h3 { font-size: 1.1rem; margin-bottom: 5px; display: flex; align-items: center; gap: 10px; }
+.subtext { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; }
+
+/* Sidebar */
+.sidebar { display: flex; flex-direction: column; }
+
+/* File Upload */
+.file-drop-area { border: 2px dashed #e5e7eb; padding: 20px; text-align: center; border-radius: 10px; transition: 0.3s; margin-bottom: 15px; }
+.file-drop-area:hover { border-color: var(--primary); background: #eff6ff; }
+.file-label { cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 5px; color: var(--text-muted); font-size: 0.9rem; }
+.file-label i { font-size: 1.5rem; color: var(--primary); }
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
+
+/* Fancy Toggle Switch */
+.toggle-wrapper { position: relative; width: 100%; height: 50px; background: #e5e7eb; border-radius: 25px; margin: 15px 0; overflow: hidden; cursor: pointer; }
+.toggle-wrapper input { display: none; }
+.toggle-label { display: flex; justify-content: space-between; align-items: center; height: 100%; padding: 0 40px; font-weight: 600; font-size: 0.9rem; color: var(--text-muted); position: relative; z-index: 2; cursor: pointer; }
+.toggle-switch { position: absolute; top: 4px; left: 4px; width: 50%; height: calc(100% - 8px); background: white; border-radius: 22px; transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1; }
+
+/* Toggle Logic */
+#modelToggle:checked + .toggle-label .toggle-switch { transform: translateX(100%); background: linear-gradient(135deg, #4F46E5, #ec4899); }
+#modelToggle:checked + .toggle-label { color: white; } /* Just a trick, text color handled by mixing-blend-mode or simple layering usually, simpler here */
+.icon-local, .icon-cloud { z-index: 3; transition: 0.3s; }
+#modelToggle:checked ~ .toggle-label .icon-local { color: var(--text-muted); }
+#modelToggle:checked + .toggle-label .icon-cloud { color: white; }
+#modelToggle:not(:checked) + .toggle-label .icon-local { color: var(--primary); }
+
+/* Chat Area */
+.chat-interface {
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-history {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message { display: flex; gap: 10px; max-width: 80%; }
+.message.user-message { align-self: flex-end; flex-direction: row-reverse; }
+.avatar { width: 35px; height: 35px; background: #e0e7ff; color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.message.user-message .avatar { background: var(--primary); color: white; }
+
+.bubble {
+    background: #f3f4f6;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border-top-left-radius: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-main);
+}
+.message.user-message .bubble {
+    background: var(--primary);
+    color: white;
+    border-radius: 12px;
+    border-top-right-radius: 0;
+}
+
+.chat-input-area {
+    padding: 15px;
+    border-top: 1px solid #f3f4f6;
+    display: flex;
+    gap: 10px;
+    background: #fafafa;
+}
+
+textarea {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    resize: none;
+    height: 50px;
+    font-family: inherit;
+    outline: none;
+    transition: 0.2s;
+}
+textarea:focus { border-color: var(--primary); background: white; }
+
+.btn-send {
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 0.2s;
+}
+.btn-send:hover { background: var(--primary-hover); transform: scale(1.05); }
+
+/* Utilities */
+.status-text { margin-top: 10px; font-size: 0.85rem; text-align: center; }
+
+
+/* --- Status Light Styles --- */
+.status-item .dot {
+    transition: 0.3s ease;
+}
+
+/* Green Light (Active) */
+.status-item.active .dot {
+    background-color: var(--green);
+    box-shadow: 0 0 8px var(--green);
+}
+
+/* Red Light (Offline/Unavailable) */
+.status-item.offline .dot {
+    background-color: var(--red);
+    box-shadow: 0 0 8px var(--red);
+}
+
+/* Optional: Text color change */
+.status-item.offline {
+    color: var(--red);
+    opacity: 0.8;
+}
