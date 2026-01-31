@@ -220,7 +220,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📞 Contact
 
-**Pradyumna Digraskar** 📧 Email: [Your Email Here]  
+**Pradyumna Digraskar** 📧 Email:pradyumnadigraskar11@gmail.com 
 🔗 LinkedIn: https://linkedin.com/in/pradyumnadigraskar  
 📂 Project Link: [https://github.com/pradyumnadigraskar/Dual-Mode-RAG-Sys](https://github.com/pradyumnadigraskar/Dual-Mode-RAG-Sys)
 
