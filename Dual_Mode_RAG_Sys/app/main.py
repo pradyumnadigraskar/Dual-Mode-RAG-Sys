@@ -6,6 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.rag_engine import ingest_pdf, query_hybrid_rag
 from fastapi.responses import RedirectResponse
 import requests 
+import uvicorn
+import sys
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -76,3 +78,4 @@ async def health_check():
         cloud_status = True
 
     return {"local": local_status, "cloud": cloud_status}
+
