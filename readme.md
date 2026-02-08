@@ -136,7 +136,7 @@ Follow these steps to get the project running on your local machine.
 
 1.  **Clone the repository**
     ```bash
-    git clone [https://github.com/yourusername/Dual-Mode-RAG-Sys.git](https://github.com/yourusername/Dual-Mode-RAG-Sys.git)
+    git clone [https://github.com/pradyumnadigraskar/Dual-Mode-RAG-Sys.git](https://github.com/pradyumnadigraskar/Dual-Mode-RAG-Sys.git)
     cd Dual_Mode_RAG_Sys
     ```
 
@@ -220,7 +220,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📞 Contact
 
-**Pradyumna Digraskar** 📧 Email: [Your Email Here]  
+**Pradyumna Digraskar** 📧 Email:pradyumnadigraskar11@gmail.com 
 🔗 LinkedIn: https://linkedin.com/in/pradyumnadigraskar  
 📂 Project Link: [https://github.com/pradyumnadigraskar/Dual-Mode-RAG-Sys](https://github.com/pradyumnadigraskar/Dual-Mode-RAG-Sys)
 
